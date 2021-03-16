@@ -1,70 +1,55 @@
 package models;
 
-public class Car extends Item{
+public class Car extends Item implements SomeInterface{
 
-    private int count;
+    public static int count = 0;
     private String carName;
     private String color;
     private int size;
     private String model;
 
-    public Car(String name){
+    private Type type;
+
+    public Car(String name, String color){
         super(name);
         this.color = color;
-        this.carName=name;
+        this.carName = name;
+        count++;
         log.info("Current car: " + this.carName);
+    }
+
+    public Car(Type type){
+        this.type = type;
+        switch (type){
+            case NORMAL:
+                System.out.println("Normal");
+                break;
+            case MINIMUM:
+                System.out.println("Minimum");
+                break;
+        }
     }
 
     public Car(){
         log.info("New empty instance");
     }
 
-    public Car(int count){
-        this.count = count;
-    }
-
     public Car(String color, boolean generateByColor){
         super(color);
         if(generateByColor){
-            switch (color){
-                case "red":
-                    this.carName = "Ferrari";
-                    break;
-                case "blue":
-                    this.carName = "Nissan";
-                    break;
-                case "yellow":
-                    this.carName = "Grandmother car";
-                    break;
-                default:
-                    this.carName = "polo";
-                    break;
-            }
-            this.color = color;
-            log.info("Color");
 
+            this.color = color;
         }
     }
 
-    public Car(int count,
-               String carName,
+    public Car(String carName,
                String color,
                int size,
                String model) {
-        this.count = count;
         this.carName = carName;
         this.color = color;
         this.size = size;
         this.model = model;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public Car setCount(int count) {
-        this.count = count;
-        return this;
     }
 
     public String getCarName() {
@@ -105,7 +90,11 @@ public class Car extends Item{
 
     @Override
     public String toString(){
-        return String.format("\nНазваание: %s; Цвет: %s", this.carName, this.color);
+        return String.format("Назваание: %s; Цвет: %s", this.carName, this.color);
     }
 
+    @Override
+    public void method() {
+
+    }
 }

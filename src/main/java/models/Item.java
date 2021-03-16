@@ -1,4 +1,5 @@
 package models;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,14 +9,11 @@ public abstract class Item {
     protected final Logger log;
     private String name;
 
-    public Item(String type){
-        this.log = LogManager.getLogger(this.getClass().getName());
-        this.type = name;
+    public Item(String name){
+        this.log = LogManager.getLogger(name);
+        this.name = name;
     }
 
-    public Item(Logger log){
-        this.log = log;
-    }
 
     public Item(){
         this.log = LogManager.getLogger(this.getClass().getName());
