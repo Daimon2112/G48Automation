@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import sun.rmi.runtime.Log;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,16 @@ public class Application {
 
     private final static Logger LOG = LogManager.getLogger("Тест");
 
-
-    public static void main(String[] args) {
-        LOG.info("=========Start========");
-
-        System.setProperty("WebdriverChrome", "/Users/dmytromyrhorodchenko/IdeaProjects/G48Automation/src/main/resources/chromedriver");
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://github.com/login");
-        LOG.info(driver.findElement(By.xpath("//input[@name = 'login']")).getText().equals("blabla"));
-        driver.quit();
+//
+//    public static void main(String[] args) {
+//        LOG.info("=========Start========");
+//
+//        System.setProperty("WebdriverChrome", "/Users/dmytromyrhorodchenko/IdeaProjects/G48Automation/src/main/resources/chromedriver");
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://github.com/login");
+//        LOG.info(driver.findElement(By.xpath("//input[@name = 'login']")).getText().equals("blabla"));
+//        driver.findElement(By.xpath("//input[@name = 'login']"));
+//        driver.quit();
 
 
 
@@ -78,6 +79,6 @@ public class Application {
 //
 //
 //        LOG.info("=========Finish========");
-    }
+//    }
 
 }
