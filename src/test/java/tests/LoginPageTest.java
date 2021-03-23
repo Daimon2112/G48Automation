@@ -1,36 +1,51 @@
 package tests;
 
-import org.junit.After;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import pages.LoginPageFactory;
+import org.openqa.selenium.By;
 import pages.LoginPageObject;
-
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
 public class LoginPageTest extends BaseTest{
 
+
     private LoginPageObject loginPage;
+    private final static Logger LOG = LogManager.getLogger("Версия селениума");
 
     @Before
-    public void setUp() {
+    public void setUp(){
         loginPage = new LoginPageObject(driver);
     }
 
     @Test
-    public void checkLogin() {
-    loginPage.login(System.getProperty("username"),System.getProperty("password"));
-    try {
-        sleep(2000);
-    }catch (InterruptedException e){
-        e.printStackTrace();
+    public void checkLogin(){
+        loginPage.login(System.getProperty("username"),System.getProperty("password"));
+        //  loginPage.validateErrorMessage("Incorrect username or password.");
     }
-    //loginPage.validateErrorMessage("incorrect username or password");
+
+
+    @Test
+    public void checkSeleniumVersion(){
+        loginPage.login(System.getProperty("username"),System.getProperty("password"));
+        driver.findElement(By.xpath("//span[contains(text(), 'G48Automation')]")).click();
+        try {
+            sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.linkText("pom.xml")).click();
+        LOG.info(loginPage.getVersionSelenium());
+        Assert.assertEquals(loginPage.getVersionSelenium(),"3.141.59");
+
+
+
     }
+
+
 
 
 

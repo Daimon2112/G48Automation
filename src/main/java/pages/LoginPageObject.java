@@ -1,3 +1,4 @@
+
 package pages;
 
 import org.junit.Assert;
@@ -6,13 +7,12 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPageObject extends BasePage {
 
-
     private final By loginField = By.name("login");
     private final By passwordField = By.name("password");
     private final By submitButton = By.name("commit");
-    private final By errorMessageText = By.cssSelector("div.container-lg.px-2");
+    private final By errorMessageText = By.xpath("//div[@class = 'flash flash-full flash-error ']/div");
 
-    public  LoginPageObject(WebDriver driver){
+    public LoginPageObject(WebDriver driver) {
         super(driver);
     }
 
@@ -24,6 +24,10 @@ public class LoginPageObject extends BasePage {
 
     public void validateErrorMessage(String errorMessage){
         Assert.assertEquals(errorMessage, driver.findElement(errorMessageText).getText());
+    }
+
+    public String getVersionSelenium(){
+        return driver.findElement(By.xpath("//td[@id ='LC20']")).getText().replaceAll("<version>","").replaceAll("</version>","").replaceAll("    ","");
     }
 
 }
