@@ -6,19 +6,19 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import pages.LoginPageObject;
+import pages.LoginPage;
 
 import static java.lang.Thread.sleep;
 
 public class LoginPageTest extends BaseTest{
 
 
-    private LoginPageObject loginPage;
+    private LoginPage loginPage;
     private final static Logger LOG = LogManager.getLogger("Версия селениума");
 
     @Before
     public void setUp(){
-        loginPage = new LoginPageObject(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Test
@@ -26,7 +26,6 @@ public class LoginPageTest extends BaseTest{
         loginPage.login(System.getProperty("username"),System.getProperty("password"));
         //  loginPage.validateErrorMessage("Incorrect username or password.");
     }
-
 
     @Test
     public void checkSeleniumVersion(){
@@ -40,13 +39,20 @@ public class LoginPageTest extends BaseTest{
         driver.findElement(By.linkText("pom.xml")).click();
         LOG.info(loginPage.getVersionSelenium());
         Assert.assertEquals(loginPage.getVersionSelenium(),"3.141.59");
-
-
-
     }
 
+    @Test
+    public void checkNegativeLogin(){
+        loginPage.login("admin","admin");
+        loginPage.validateErrorMessage("Incorrect username or password.");
+    }
 
-
-
+    @Test
+    public void showCommitMessageTest(){
+        loginPage.login(System.getProperty("username"), System.getProperty("password"))
+                .openProjectG48()
+                .showCommitMessage()
+                .logout();
+    }
 
 }

@@ -1,12 +1,16 @@
-package pages;
+package pages.factory;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPageFactory {
+
+    private WebDriver driver;
 
     @FindBy(name = "login")
     private WebElement loginField;
@@ -23,6 +27,7 @@ public class LoginPageFactory {
     private WebElement errorMessageText;
 
     public LoginPageFactory(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -34,6 +39,8 @@ public class LoginPageFactory {
     }
 
     public void validateErrorMessage(String errorMessage){
+        new WebDriverWait(driver, 20)
+                .until(ExpectedConditions.textToBePresentInElement(errorMessageText, errorMessage));
         Assert.assertEquals(errorMessage, errorMessageText.getText());
     }
 
