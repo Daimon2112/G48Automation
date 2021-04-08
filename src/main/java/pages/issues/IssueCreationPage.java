@@ -38,7 +38,7 @@ public class IssueCreationPage extends BaseProjectPage {
                 .filter(labelOnPage -> labels.contains(labelOnPage.getText()))
                 .forEach(filteredLabelOnPage -> filteredLabelOnPage.click());
 
-        driver.findElements(submitButton).get(0).click();
+
         driver.findElements(submitButton).get(0).click();
 
         return new pages.issues.IssueInfoPage(driver);

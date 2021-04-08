@@ -33,6 +33,10 @@ public class LoginPage extends BasePage {
         return this;
     }
 
+    public void displayedTab(By element){
+        LOG.info(driver.findElement(element).getText());
+    }
 
+//LOG.info(driver.findElements(commitMessageText).get(0).getText());
 
 }

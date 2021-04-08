@@ -1,4 +1,4 @@
-package tests;
+package tests.ui;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import pages.LoginPage;
 
+import static java.lang.System.getProperty;
 import static java.lang.Thread.sleep;
 
 public class LoginPageTest extends BaseTest{
@@ -15,6 +16,15 @@ public class LoginPageTest extends BaseTest{
 
     private LoginPage loginPage;
     private final static Logger LOG = LogManager.getLogger("Версия селениума");
+    public By Code = By.xpath("//span[@data-content = 'Code']");
+    public By Issues = By.xpath("//span[@data-content = 'Issues']");
+    public By pullRequests = By.xpath("//span[@data-content = 'Pull requests']");
+    public By action = By.xpath("//span[@data-content = 'Actions']");
+    public By projects = By.xpath("//span[@data-content = 'Projects']");
+    public By wiki = By.xpath("//span[@data-content = 'Wiki']");
+    public By security = By.xpath("//span[@data-content = 'Security']");
+    public By insights = By.xpath("//span[@data-content = 'Insights']");
+    public By settings = By.xpath("//span[@data-content = 'Settings']");
 
     @Before
     public void setUp(){
@@ -54,5 +64,22 @@ public class LoginPageTest extends BaseTest{
                 .showCommitMessage()
                 .logout();
     }
+
+    @Test
+    public void displayedAllTabs(){
+        loginPage.login(getProperty("username"), getProperty("password"))
+                .openProjectG48();
+        loginPage.displayedTab(Code);
+        loginPage.displayedTab(Issues);
+        loginPage.displayedTab(pullRequests);
+        loginPage.displayedTab(action);
+        loginPage.displayedTab(projects);
+        loginPage.displayedTab(wiki);
+        loginPage.displayedTab(security);
+        loginPage.displayedTab(insights);
+        loginPage.displayedTab(settings);
+    }
+
+
 
 }
