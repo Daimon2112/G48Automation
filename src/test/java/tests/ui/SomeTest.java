@@ -26,7 +26,7 @@ public class SomeTest {
     public static List<String[]> data(){
         List<String[]> result = new ArrayList<>();
         result.add(new String[]{"adminUser", "adminPassword"});
-        result.add(new String[]{"testUser", "testPassword"});
+        //result.add(new String[]{"testUser", "testPassword"});
         return result;
     }
 
@@ -40,13 +40,13 @@ public class SomeTest {
     public void some(){
         System.out.println(readFile("/Users/dmytromyrhorodchenko/IdeaProjects/G48Automation/src/main/resources/test"));
         List<String> data = new ArrayList<>();
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
-        data.add("Я буду хорошим автоматизатором на Selenium");
+        data.add("Я буду хорошим автоматизатором на 1");
+        data.add("Я буду хорошим автоматизатором на 2");
+        data.add("Я буду хорошим автоматизатором на 3");
+        data.add("Я буду хорошим автоматизатором на 4");
+        data.add("Я буду хорошим автоматизатором на 5");
+        data.add("Я буду хорошим автоматизатором на 6");
+        data.add("Я буду хорошим автоматизатором на 7");
 
         readFile(String.valueOf(writeFileAndGet(data, "our_test.txt"))).forEach(System.out::println);
     }

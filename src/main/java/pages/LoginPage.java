@@ -8,19 +8,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
 
+    private static final String title = "Cтраница авторизации";
+
     private final By loginField = By.name("login");
     private final By passwordField = By.name("password");
     private final By submitButton = By.name("commit");
     private final By errorMessageText = By.xpath("//div[@class = 'flash flash-full flash-error']/div");
 
     public LoginPage(WebDriver driver) {
-        super(driver);
+        super(driver, title);
     }
 
     public MainPage login(String username, String password){
+        LOG.info("Производится авторизация");
         driver.findElement(loginField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(submitButton).click();
+        LOG.info("Авторизация успешна");
         return new MainPage(driver);
     }
 
@@ -33,9 +37,6 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void displayedTab(By element){
-        LOG.info(driver.findElement(element).getText());
-    }
 
 //LOG.info(driver.findElements(commitMessageText).get(0).getText());
 

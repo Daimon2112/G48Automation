@@ -7,7 +7,10 @@ import org.junit.runners.Parameterized;
 import pages.LoginPage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static helpers.FileHelper.readFile;
 
 @RunWith(Parameterized.class)
 public class NegativeLoginTest extends BaseTest{
@@ -38,6 +41,14 @@ public class NegativeLoginTest extends BaseTest{
         result.add(new String[]{"admin", " OR 1=1"});
         return result;
     }
+
+
+
+//    public static List<Object[]> data(){
+//        List<Object[]> result = new ArrayList<>();
+//        readFile(getProperty("user.dir") + "/src/test/resources/testData/negative_login_data.txt").forEach(line -> result.add(line.split(", ")));
+//        return result;
+//    }
 
     @Test
     public void checkNegativeLogin(){

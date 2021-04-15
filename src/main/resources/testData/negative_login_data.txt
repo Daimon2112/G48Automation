@@ -1,0 +1,7 @@
+BkuSo, h23kjhr
+admin, "admin
+user, "user
+<script>alert(\"Error!\")</script>, 123qweqwe
+jklwg, <script>alert(\"Error!\")</script>
+admin, #
+admin, OR 1=1

@@ -8,8 +8,9 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClick
 
 public class MainPage extends BaseAuthorizedPage{
 
+    private static final String title = "Основная страница приложения";
     public MainPage(WebDriver driver) {
-        super(driver);
+        super(driver, title);
     }
 
     private By repositoryLink = By.xpath("//span[@title = 'G48Automation']");
