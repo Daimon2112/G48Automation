@@ -14,6 +14,9 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
 
+
+
+
     @Before
     public void init(){
         String browserName = System.getProperty("browser", "chrome");

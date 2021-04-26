@@ -1,5 +1,7 @@
 package tests.ui;
 
+import io.qameta.allure.*;
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -49,6 +51,14 @@ public class LoginPageTest extends BaseTest{
         loginPage.validateErrorMessage("Incorrect username or password.");
     }
 
+    @Description("Нужно чтобы показыать последнее сообщение коммита")
+    @TmsLink("Ссылка на тест кейс")
+    @Issue("тут указать сылку на баг - удобно для регресии")
+    @Feature("?????")
+    @Story("????")
+    @Owner("тот кто писал")
+    @Severity(SeverityLevel.CRITICAL)//уровень важности
+    @DisplayName("Название теста")
     @Test
     public void showCommitMessageTest(){
         loginPage.login(System.getProperty("username"), System.getProperty("password"))
