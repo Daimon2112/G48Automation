@@ -25,12 +25,15 @@ public class LoginPageTest extends BaseTest{
         loginPage = new LoginPage(driver);
     }
 
+    @DisplayName("BLA4")
     @Test
     public void checkLogin(){
         loginPage.login(System.getProperty("username"),System.getProperty("password"));
         //  loginPage.validateErrorMessage("Incorrect username or password.");
     }
 
+
+    @DisplayName("BLA3")
     @Test
     public void checkSeleniumVersion(){
         loginPage.login(System.getProperty("username"),System.getProperty("password"));
@@ -45,20 +48,21 @@ public class LoginPageTest extends BaseTest{
         Assert.assertEquals(loginPage.getVersionSelenium(),"3.141.59");
     }
 
+    @DisplayName("BLA 2")
     @Test
     public void checkNegativeLogin(){
         loginPage.login("admin","admin");
         loginPage.validateErrorMessage("Incorrect username or password.");
     }
 
-    @Description("Нужно чтобы показыать последнее сообщение коммита")
-    @TmsLink("Ссылка на тест кейс")
-    @Issue("тут указать сылку на баг - удобно для регресии")
-    @Feature("?????")
-    @Story("????")
-    @Owner("тот кто писал")
-    @Severity(SeverityLevel.CRITICAL)//уровень важности
-    @DisplayName("Название теста")
+//    @Description("Нужно чтобы показыать последнее сообщение коммита")
+//    @TmsLink("Ссылка на тест кейс")
+//    @Issue("тут указать сылку на баг - удобно для регресии")
+//    @Feature("?????")
+//    @Story("????")
+//    @Owner("тот кто писал")
+//    @Severity(SeverityLevel.CRITICAL)//уровень важности
+    @DisplayName("BLA BLA BLA")
     @Test
     public void showCommitMessageTest(){
         loginPage.login(System.getProperty("username"), System.getProperty("password"))
