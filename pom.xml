@@ -89,6 +89,7 @@
                     <systemPropertyVariables>
                         <allure.results>target/allure-results</allure.results>
                         <username>Daimon2112</username>
+                        <password>21121992Dimon</password>
                     </systemPropertyVariables>
                 </configuration>
                 <dependencies>
