@@ -8,20 +8,137 @@
     <artifactId>G48Automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+<!--        <driver.dir.path>${project.basedir}/src/main/resources/drivers</driver.dir.path>-->
+<!--        <browser>${browser}</browser>-->
+<!--        <driver.name>${driver.name}</driver.name>-->
+<!--        <driver.path>${driver.path}</driver.path>-->
+        <aspectj.version>1.8.10</aspectj.version>
+    </properties>
+
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.8.1</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>2.12.4</version>-->
+<!--                <configuration>-->
+<!--                    <testFailureIgnore>false</testFailureIgnore>-->
+<!--                    <properties>-->
+<!--                        <property>-->
+<!--                            <name>listener</name>-->
+<!--                            <value>io.qameta.allure.junit4.AllureJunit4</value>-->
+<!--                        </property>-->
+<!--                    </properties>-->
+<!--                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>-->
+<!--                    <systemPropertyVariables>-->
+<!--                        <allure.results>target/allure-results</allure.results>-->
+<!--                        <username>Daimon2112</username>-->
+<!--                        <password>21121992Dimon</password>-->
+<!--                    </systemPropertyVariables>-->
+<!--                </configuration>-->
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.aspectj</groupId>-->
+<!--                        <artifactId>aspectjweaver</artifactId>-->
+<!--                        <version>${aspectj.version}</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
+<!--            </plugin>-->
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>2.10.0</version>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                        </property>
+                    </properties>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                    <systemPropertyVariables>
+                        <allure.results>target/allure-results</allure.results>
+                        <username>Daimon2112</username>
+                    </systemPropertyVariables>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>Chrome</id>-->
+<!--            <properties>-->
+<!--                <browser>chrome</browser>-->
+<!--                <browser.version>84.0</browser.version>-->
+<!--                <driver.name>webdriver.chrome.driver</driver.name>-->
+<!--                <driver.path>${driver.dir.path}/chrome/${browser.version}/chromedriver</driver.path>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--        <profile>-->
+<!--            <id>Firefox</id>-->
+<!--            <properties>-->
+<!--                <browser>firefox</browser>-->
+<!--                <browser.version>86.0.1</browser.version>-->
+<!--                <driver.name>webdriver.gecko.driver</driver.name>-->
+<!--                <driver.path>${driver.dir.path}/firefox/${browser.version}/geckodriver</driver.path>-->
+<!--            </properties>-->
+<!--        </profile>-->
+<!--    </profiles>-->
+
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>5.0.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -42,6 +159,11 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <version>3.141.59</version>
         </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -53,59 +175,41 @@
             <artifactId>selenium-support</artifactId>
             <version>3.141.59</version>
         </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-opera-driver</artifactId>
-            <version>3.141.59</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>4.3.3</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>4.3.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activejdbc</artifactId>
+            <version>3.0-j11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.19</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit4</artifactId>
+            <version>2.13.9</version>
+        </dependency>
+
+        <dependency>
+            <groupId>aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.5.4</version>
+        </dependency>
 
     </dependencies>
-
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-
-    </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <webdriver.chrome.driver>${project.basedir}/src/main/resources/chromedriver</webdriver.chrome.driver>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-
-
-
 
 </project>

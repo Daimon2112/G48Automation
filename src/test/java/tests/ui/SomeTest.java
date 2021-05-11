@@ -1,15 +1,25 @@
 
 package tests.ui;
 
+import dbModels.Users;
+import org.javalite.activejdbc.DB;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static helpers.FileHelper.readFile;
 import static helpers.FileHelper.writeFileAndGet;
+
+//import static helpers.DbHelper.executeQuery;
+//import static helpers.DbHelper.executeQueryWithResult;
+//import static helpers.ExcelHelper.*;
+import static helpers.FileHelper.readFile;
+import static helpers.FileHelper.writeFileAndGet;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(Parameterized.class)
 public class SomeTest {
@@ -49,6 +59,36 @@ public class SomeTest {
         data.add("Я буду хорошим автоматизатором на 7");
 
         readFile(String.valueOf(writeFileAndGet(data, "our_test.txt"))).forEach(System.out::println);
+    }
+    @Test
+    public void checkDbTest(){
+        new DB("dmitrybase")
+                .open(
+                        "org.postgresql.Driver",
+                        "jdbc:postgresql://localhost:5432/dmitrybase",
+                        "postgres",
+                        "postgres");
+        //create
+        new Users()
+                .set("username", "test")
+                .set("password", "test")
+                .saveIt();
+        //read
+        System.out.println(
+                Users.findFirst("username = ?", "admin"));
+        //update
+//        Users.findFirst("username = ?", "admin")
+//                .set("password", String.valueOf(new Date().getTime()))
+//                .saveIt();
+
+        //delete
+        Users.findFirst("username = ?", "test").delete();
+
+
+        //delete from users where id = 3
+        // System.out.println(Users.findById(1));
+
+        new DB("dmitrybase").close();
     }
 
 //    @Test
